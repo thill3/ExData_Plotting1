@@ -52,9 +52,9 @@ GAP <-
 sapply(analyzeData[, GAP], as.numeric) #This only works because I forced
 #the numeric values to load as characters rather than factors.
 library(dplyr)
-data3 <- as_tibble(analyzeData)
-data3.2 <-
-        data2 %>% mutate("Datetime" = as.POSIXct(
+data4 <- as_tibble(analyzeData)
+data4.2 <-
+        data4 %>% mutate("Datetime" = as.POSIXct(
                 strptime(
                         paste(
                                 dmy(
@@ -73,20 +73,20 @@ png(filename = "plot4.png",
     height = 480)
 par(mfrow = c(2,2))
 #Plot 2
-with(data2.2, plot(Datetime, Global_active_power, type = "l", ylab = "Global Active Power (Kilowatts)", xlab = ""))
+with(data4.2, plot(Datetime, Global_active_power, type = "l", ylab = "Global Active Power (Kilowatts)", xlab = ""))
 #New Plot
-with(data2.2, plot(Datetime, Voltage, type = "l", ylab = "Voltage", xlab = "datetime"))
+with(data4.2, plot(Datetime, Voltage, type = "l", ylab = "Voltage", xlab = "datetime"))
 #Plot 3
-with(data3.2, plot(Datetime, Sub_metering_1, type = "l", ylab = "Energy Sub Metering", xlab = ""))
-with(data3.2, lines(Datetime, Sub_metering_2, type = "l", col="red"))
-with(data3.2, lines(Datetime, Sub_metering_3, type = "l", col="blue"))
-with(data3.2
+with(data4.2, plot(Datetime, Sub_metering_1, type = "l", ylab = "Energy Sub Metering", xlab = ""))
+with(data4.2, lines(Datetime, Sub_metering_2, type = "l", col="red"))
+with(data4.2, lines(Datetime, Sub_metering_3, type = "l", col="blue"))
+with(data4.2
      , legend("topright"
               , lty = c(1,1,1)
               , bty = "n"
               , col = c("black", "red", "blue")
-              , legend = names(data3.2)[7:9])
+              , legend = names(data4.2)[7:9])
 )
 #New Plot 2
-with(data3.2, plot(Datetime, Global_reactive_power, type = "l", ylab = "Energy Sub Metering", xlab = ""))
+with(data4.2, plot(Datetime, Global_reactive_power, type = "l", ylab = "Energy Sub Metering", xlab = ""))
 dev.off() #have to do this or else I can't view the image
