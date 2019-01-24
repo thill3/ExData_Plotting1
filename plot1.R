@@ -64,5 +64,7 @@ hist1 <- hist(data1
               ,
               xlab = "Global Active Power (Kilowatts)"
               ,
-              col = "red")
+              col = "red"
+              ,
+              main = "Global Active Power")
 dev.off() #have to do this or else I can't view the image
