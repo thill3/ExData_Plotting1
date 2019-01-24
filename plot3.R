@@ -54,7 +54,7 @@ sapply(analyzeData[, GAP], as.numeric) #This only works because I forced
 library(dplyr)
 data3 <- as_tibble(analyzeData)
 data3.2 <-
-        data2 %>% mutate("Datetime" = as.POSIXct(
+        data3 %>% mutate("Datetime" = as.POSIXct(
                                                  strptime(
                                                           paste(
                                                                 dmy(
